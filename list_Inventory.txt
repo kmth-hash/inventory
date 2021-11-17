@@ -1,0 +1,24 @@
+Invoice page
+	- Vendor details 
+		- Name
+		- Address
+		- Phone number
+
+	- Item details
+		- Item name
+		- quantity
+		- Total price per item
+
+	- Mode of purchase
+		- Online or Phone
+		- how is it sent to him
+
+	- Bill related
+		- GST number
+		- Tracking ID
+		- Upload an image of the bill
+
+	- Give option to view all the orders places to the vendor
+
+	- Show it in a statistical manner
+	
