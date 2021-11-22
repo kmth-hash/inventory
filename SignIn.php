@@ -36,18 +36,18 @@
                   <p> </p>
 
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example11">Username</label>
-                    <input type="email" id="form2Example11" class="form-control" placeholder="Phone number or email address"/>                    
+                    <label class="form-label" for="form2Example11"><i class='bx bxs-user'></i> Username</label>
+                    <input type="email" id="form2Example11" class="form-control" placeholder=""/>                    
                   </div>
 
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form2Example22">Password</label>
+                    <label class="form-label" for="form2Example22"><i class='bx bxs-lock'></i> Password</label>
                     <input type="password" id="form2Example22" class="form-control" />                    
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"> Log in</button>
-                    <a class="text-muted" href="#!">Forgot password?</a>
+                    <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button"> Log in <i class='bx bxs-arrow-to-right'></i>  </button>
+                    <a class="text-muted" href="#">Forgot password?</a>
                   </div>
                   <!--
                   <div class="d-flex align-items-center justify-content-center pb-4">
