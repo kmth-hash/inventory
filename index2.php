@@ -36,9 +36,7 @@
           src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
           src: local('Material Icons'),
           local('MaterialIcons-Regular'),
-          url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-          url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-          url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+
         }
 
         .material-icons {
@@ -92,7 +90,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/tables.html">
+          <a class="nav-link text-white " href="tables.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
