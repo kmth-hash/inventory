@@ -1,3 +1,8 @@
+<?php
+include 'sqlFiles/retreive.php';
+                session_start();     
+                $item_num=0;
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +17,158 @@
       <link rel="stylesheet" href="assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
       <link rel="stylesheet" href="assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
       <link rel="stylesheet" href="assets/vendor/remixicon/fonts/remixicon.css">  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script type="text/javascript" src="ajax-calls/ajax-script.js"></script>
+      <script>
+        function checkPreviousitems(){
+            if(window.sessionStorage.getItem('item_num')){
+                for(let i=0;i<parseInt(sessionStorage.getItem('item_num'));i++){
+                    var item_no = i+1;
+                    var d1=document.getElementById('extraItems');
+                    d1.insertAdjacentHTML('beforeend',`<div id="Item`+item_no+`" class="row">
+                        <div class="col-md-6" <label style="color:black" for="">Item `+item_no+`</label><span><button  type="button" onclick="removeItem(`+item_no+`)" class="btn-danger btn" style="display: flex;justify-content: center;align-items: center; height: 24px; width:24px;font-size: 10px;border-radius: 12px;color: black;-webkit-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);-moz-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);">x</button></span>
+                            
+                                <select id="Select`+item_no+`" onchange="report(this.value,`+item_no+`)" class="form-select form-control" data-style="py-0">
+                                    <?php
+                                $res = retreiveItems();
+                            ?>
+                            <option selected disabled>Select the item</option>
+                            <?php
+                            while($arr=mysqli_fetch_assoc($res)){
+                                ?>
+                            <option><?php echo $arr['name']?></option>
+                            <?php
+                            }
+                            ?>
+                            <option value="newItem">
+                                Add a new Item
+                            </option></select></div>
+                            <div class="col-md-6">
+                                <label for="">Quantity `+item_no+`</label> 
+                                <div style="padding: 0px;" class="col-md-12">
+                                    <input id="qtyInput`+item_no+`" oninput="qtyReport(this.value,`+item_no+`)" style="margin-top:15px;margin-bottom:15px" type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." required>
+                                </div>
+                            </div>
+
+                    </div>`);
+                    if(window.sessionStorage.getItem('itemList')){
+                        var itemList=JSON.parse(window.sessionStorage.getItem('itemList'));
+                    if(itemList[item_no-1]==undefined){
+                        document.getElementById('Select'+item_no).selectedindex = 0;
+                    }
+                    else{
+                        document.getElementById('Select'+item_no).value = itemList[item_no-1]
+                    }
+                    }
+                    if(window.sessionStorage.getItem('qtyList')){
+                        var qtyList=JSON.parse(window.sessionStorage.getItem('qtyList'));
+                        if(qtyList[item_no-1]== undefined){
+                        document.getElementById('qtyInput'+item_no).value = ''
+                        }
+                        else{
+                        document.getElementById('qtyInput'+item_no).value = qtyList[item_no-1]
+                        }
+                    }
+                }
+            }
+        }
+        function qtyReport(value,itno){
+            if(window.sessionStorage.getItem('qtyList')){
+                var qty=[];
+                qty= JSON.parse(window.sessionStorage.getItem('qtyList'));
+                qty[itno-1]=value
+                window.sessionStorage.setItem('qtyList',JSON.stringify(qty))
+              }
+              else{
+                var qty=[];
+                qty[itno-1] = value;
+                window.sessionStorage.setItem('qtyList',JSON.stringify(qty))
+              }
+        }
+          function report(value,index){
+
+              if ( value == "newItem"){
+                var itemList=JSON.parse(window.sessionStorage.getItem('itemList'));
+                itemList.splice(index-1, 1)
+                window.sessionStorage.setItem('itemList',JSON.stringify(itemList))
+                  window.location.href="addList.php";
+                  
+              }
+              else{
+                  if(window.sessionStorage.getItem('itemList')){
+                    var items=[];
+                    items= JSON.parse(window.sessionStorage.getItem('itemList'));
+                    items[index-1]=value
+                    window.sessionStorage.setItem('itemList',JSON.stringify(items))
+                  }
+                  else{
+                    var items=[];
+                    items[index-1] = value;
+                    window.sessionStorage.setItem('itemList',JSON.stringify(items))
+                  }
+                  
+              }
+          }
+            function removeItem(itemNo){
+                if(window.sessionStorage.getItem('itemList')){
+                    var itemList=JSON.parse(window.sessionStorage.getItem('itemList'));
+                itemList.splice(itemNo-1, 1)
+                window.sessionStorage.setItem('itemList',JSON.stringify(itemList))
+                }
+                if(window.sessionStorage.getItem('qtyList')){
+                    var qty= JSON.parse(window.sessionStorage.getItem('qtyList'));
+                qty.splice(itemNo-1, 1)
+                window.sessionStorage.setItem('qtyList',JSON.stringify(qty))
+                }
+                document.getElementById('extraItems').innerHTML = '';
+                window.sessionStorage.setItem('item_num',parseInt(window.sessionStorage.getItem('item_num'))-1);
+                checkPreviousitems();
+            }
+          
+          function callnewitemContainer(){
+            if(window.sessionStorage.getItem('item_num')){
+                var item_no = parseInt(window.sessionStorage.getItem('item_num'));
+                item_no+=1;
+            }
+            else{
+                window.sessionStorage.setItem('item_num',1);
+                var item_no=1;
+            }
+            var d1=document.getElementById('extraItems');
+            d1.insertAdjacentHTML('beforeend',`<div id="Item`+item_no+`" class="row">
+                <div class="col-md-6"  <label  for="">Item `+item_no+`</label><span><button  type="button" onclick="removeItem(`+item_no+`)" class="btn-danger btn" style="display: flex;justify-content: center;align-items: center; height: 24px; width:24px;font-size: 10px;border-radius: 12px;color: black;-webkit-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);-moz-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);">x</button></span>
+                    
+                        <select id="Select`+item_no+`" onchange="report(this.value,`+item_no+`)" class="form-select form-control" data-style="py-0">
+                            <?php
+                        $res = retreiveItems();
+                    ?>
+                    <option selected disabled>Select the item</option>
+                    <?php
+                    while($arr=mysqli_fetch_assoc($res)){
+                        ?>
+                    <option><?php echo $arr['name']?></option>
+                    <?php
+                    }
+                    ?>
+                    <option value="newItem">
+                        Add a new Item
+                    </option></select></div>
+                    <div class="col-md-6">
+                        <label for="">Quantity `+item_no+`</label> 
+                        <div style="padding: 0px;" class="col-md-12">
+                            <input id="qtyInput`+item_no+`" oninput="qtyReport(this.value,`+item_no+`)" style="margin-top:15px;margin-bottom:15px" type="text" class="form-control" placeholder="Enter Quantity" data-errors="Please Enter Quantity." required>
+                        </div>
+                    </div>
+
+            </div>`);
+          window.sessionStorage.setItem('item_num',parseInt(item_no));   
+        }
+            
+      </script>
+          <!-- document.getElementById('extraItems').innerHTML+='<label>Item </label><div style="padding-left:0px;margin-bottom:20px;padding-right:0px" class="col-md-12"><select class="form-select form-control" data-style="py-0"><option>henlo</option></select></div>'; -->
+          <!-- <?php echo $_SESSION['item_num']; ?> -->
   </head>
-  <body class="  ">
+  <body class="  " onload="checkPreviousitems()">
     <!-- loader Start -->
     <div id="loading">
           <div id="loading-center">
@@ -32,6 +187,7 @@
                   <i class="las la-bars wrapper-menu"></i>
               </div>
           </div>
+          <!-- <input on="" type="text" name="" id=""> -->
           <div class="data-scrollbar" data-scroll="1">
               <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
@@ -864,358 +1020,51 @@
                   </div>
               </div>
           </div>
-      </div>      <div class="content-page">
-     <div class="container-fluid">
+      </div>    
+      <div class="content-page">
+     <div class="container-fluid add-form-list">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card card-transparent card-block card-stretch card-height border-none">
-                    <div class="card-body p-0 mt-lg-2 mt-0">
-                        <h3 class="mb-3">Hi Graham, Good Morning</h3>
-                        <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-info-light">
-                                        <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Total Sales</p>
-                                        <h4>31.50</h4>
-                                    </div>
-                                </div>                                
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-info iq-progress progress-1" data-percent="85">
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-danger-light">
-                                        <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Total Cost</p>
-                                        <h4>$ 4598</h4>
-                                    </div>
-                                </div>
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-danger iq-progress progress-1" data-percent="70">
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-success-light">
-                                        <img src="../assets/images/product/3.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Product Sold</p>
-                                        <h4>4589 M</h4>
-                                    </div>
-                                </div>
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-success iq-progress progress-1" data-percent="75">
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-block card-stretch card-height">
+            <div class="col-sm-12">
+                <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Overview</h4>
-                        </div>                        
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton001">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-                    <div class="card-body">
-                        <div id="layout1-chart1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Revenue Vs Cost</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton002">
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
+                            <h4 class="card-title">Add Product</h4>
                         </div>
                     </div>
                     <div class="card-body">
-                        <div id="layout1-chart-2" style="min-height: 360px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Top Products</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton006">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
+                        <form id="addProduct" data-toggle="validator">
+                            <div class="row">
+                                <div class="col-md-6">                      
+                                    <div class="form-group">
+                                        <label>Product Name *</label>
+                                        <input id="prodName" type="text" class="form-control" placeholder="Enter Name" data-errors="Please Enter Name." required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>  
+                                 <div class="col-md-12">
+                                     <label >Add Items</label>
+                                 </div>
+                                
+                                <div id="extraItems" class="col-md-12">
+
+                                </div> 
+                                <div class="col-md-4">
+                                    <button onclick="callnewitemContainer()" type="button" class="btn btn-dark" style="height: 40px; width: 40px; border-radius: 20px;color: white;font-weight: bold;-webkit-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);
+                                    -moz-box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);
+                                    box-shadow: 3px 4px 13px -4px rgba(0,0,0,0.75);">
+                                        +
+                                    </button>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled row top-product mb-0">
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-warning-light rounded">
-                                            <img src="../assets/images/product/01.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">789 Item</p>
-                                        </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description / Product Details</label>
+                                        <textarea class="form-control" rows="4"></textarea>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-danger-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Rain Umbrella</h5>
-                                            <p class="mb-0">657 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-info-light rounded">
-                                            <img src="../assets/images/product/03.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Serum Bottle</h5>
-                                            <p class="mb-0">489 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-success-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">468 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">  
-                <div class="card card-transparent card-block card-stretch mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between p-0">
-                        <div class="header-title">
-                            <h4 class="card-title mb-0">Best Item All Time</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div><a href="#" class="btn btn-primary view-btn font-size-14">View All</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-warning-light rounded">
-                                <img src="../assets/images/product/04.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Coffee Beans Packet</h5>
-                                <p class="mb-2">Total Sell : 45897</p>
-                                <p class="mb-0">Total Earned : $45,89 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-danger-light rounded">
-                                <img src="../assets/images/product/05.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Bottle Cup Set</h5>
-                                <p class="mb-2">Total Sell : 44359</p>
-                                <p class="mb-0">Total Earned : $45,50 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-            <div class="col-lg-4">  
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Income</p>
-                                <h5>$ 98,7800 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton003"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton003">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-3" class="layout-chart-1"></div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Expenses</p>
-                                <h5>$ 45,8956 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton004"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton004">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-4" class="layout-chart-2"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">  
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Order Summary</h4>
-                        </div>                        
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton005"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton005">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="card-body">
-                        <div class="d-flex flex-wrap align-items-center mt-2">
-                            <div class="d-flex align-items-center progress-order-left">
-                                <div class="progress progress-round m-0 orange conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-secondary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3 pr-5 border-right">
-                                    <h5>$12,6598</h5>
-                                    <p class="mb-0">Average Orders</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center ml-5 progress-order-right">
-                                <div class="progress progress-round m-0 primary conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-primary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3">
-                                    <h5>$59,8478</h5>
-                                    <p class="mb-0">Top Orders</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div id="layout1-chart-5"></div>
+                            </div>                            
+                            <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
                     </div>
                 </div>
             </div>

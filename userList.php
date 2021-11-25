@@ -864,364 +864,277 @@
                   </div>
               </div>
           </div>
-      </div>      <div class="content-page">
-     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card card-transparent card-block card-stretch card-height border-none">
-                    <div class="card-body p-0 mt-lg-2 mt-0">
-                        <h3 class="mb-3">Hi Graham, Good Morning</h3>
-                        <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
-                    </div>
-                </div>
+      </div>    
+      <div class="content-page">
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card">
+            <div class="card-header d-flex justify-content-between">
+               <div class="header-title">
+                  <h4 class="card-title">User List</h4>
+               </div>
             </div>
-            <div class="col-lg-8">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-info-light">
-                                        <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Total Sales</p>
-                                        <h4>31.50</h4>
-                                    </div>
-                                </div>                                
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-info iq-progress progress-1" data-percent="85">
-                                    </span>
-                                </div>
-                            </div>
+            <div class="card-body">
+               <div class="table-responsive">
+                  <div class="row justify-content-between">
+                     <div class="col-sm-6 col-md-6">
+                        <div id="user_list_datatable_info" class="dataTables_filter">
+                           <form class="mr-3 position-relative">
+                              <div class="form-group mb-0">
+                                 <input type="search" class="form-control" id="exampleInputSearch" placeholder="Search"
+                                    aria-controls="user-list-table">
+                              </div>
+                           </form>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-danger-light">
-                                        <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Total Cost</p>
-                                        <h4>$ 4598</h4>
-                                    </div>
-                                </div>
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-danger iq-progress progress-1" data-percent="70">
-                                    </span>
-                                </div>
-                            </div>
+                     </div>
+                     <div class="col-sm-6 col-md-6">
+                        <div class="user-list-files d-flex">
+                           <a class="bg-primary" href="javascript:void();">
+                              Print
+                           </a>
+                           <a class="bg-primary" href="javascript:void();">
+                              Excel
+                           </a>
+                           <a class="bg-primary" href="javascript:void();">
+                              Pdf
+                           </a>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="card card-block card-stretch card-height">
-                            <div class="card-body">
-                                <div class="d-flex align-items-center mb-4 card-total-sale">
-                                    <div class="icon iq-icon-box-2 bg-success-light">
-                                        <img src="../assets/images/product/3.png" class="img-fluid" alt="image">
-                                    </div>
-                                    <div>
-                                        <p class="mb-2">Product Sold</p>
-                                        <h4>4589 M</h4>
-                                    </div>
-                                </div>
-                                <div class="iq-progress-bar mt-2">
-                                    <span class="bg-success iq-progress progress-1" data-percent="75">
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Overview</h4>
-                        </div>                        
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton001">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>                    
-                    <div class="card-body">
-                        <div id="layout1-chart1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Revenue Vs Cost</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton002">
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="layout1-chart-2" style="min-height: 360px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Top Products</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton006">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled row top-product mb-0">
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-warning-light rounded">
-                                            <img src="../assets/images/product/01.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">789 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-danger-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Rain Umbrella</h5>
-                                            <p class="mb-0">657 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-info-light rounded">
-                                            <img src="../assets/images/product/03.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Serum Bottle</h5>
-                                            <p class="mb-0">489 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-success-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">468 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                     </div>
+                  </div>
+                  <table id="user-list-table" class="table table-striped dataTable mt-4" role="grid"
+                     aria-describedby="user-list-page-info">
+                     <thead>
+                        <tr class="ligth">
+                           <th>Profile</th>
+                           <th>Name</th>
+                           <th>Contact</th>
+                           <th>Email</th>
+                           <th>Country</th>
+                           <th>Status</th>
+                           <th>Company</th>
+                           <th>Join Date</th>
+                           <th style="min-width: 100px">Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/01.jpg" alt="profile"></td>
+                           <td>Anna Sthesia</td>
+                           <td>(760) 756 7568</td>
+                           <td>annasthesia@gmail.com</td>
+                           <td>USA</td>
+                           <td><span class="badge bg-primary">Active</span></td>
+                           <td>Acme Corporation</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/02.jpg" alt="profile"></td>
+                           <td>Brock Lee</td>
+                           <td>+62 5689 458 658</td>
+                           <td>brocklee@gmail.com</td>
+                           <td>Indonesia</td>
+                           <td><span class="badge bg-primary">Active</span></td>
+                           <td>Soylent Corp</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/03.jpg" alt="profile"></td>
+                           <td>Dan Druff</td>
+                           <td>+55 6523 456 856</td>
+                           <td>dandruff@gmail.com</td>
+                           <td>Brazil</td>
+                           <td><span class="badge bg-warning-light">Pending</span></td>
+                           <td>Umbrella Corporation</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/04.jpg" alt="profile"></td>
+                           <td>Hans Olo</td>
+                           <td>+91 2586 253 125</td>
+                           <td>hansolo@gmail.com</td>
+                           <td>India</td>
+                           <td><span class="badge bg-danger-light">Inactive</span></td>
+                           <td>Vehement Capital</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/05.jpg" alt="profile"></td>
+                           <td>Lynn Guini</td>
+                           <td>+27 2563 456 589</td>
+                           <td>lynnguini@gmail.com</td>
+                           <td>Africa</td>
+                           <td><span class="badge bg-primary">Active</span></td>
+                           <td>Massive Dynamic</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/06.jpg" alt="profile"></td>
+                           <td>Eric Shun</td>
+                           <td>+55 25685 256 589</td>
+                           <td>ericshun@gmail.com</td>
+                           <td>Brazil</td>
+                           <td><span class="badge bg-warning-light">Pending</span></td>
+                           <td>Globex Corporation</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/07.jpg" alt="profile"></td>
+                           <td>aaronottix</td>
+                           <td>(760) 765 2658</td>
+                           <td>budwiser@ymail.com</td>
+                           <td>USA</td>
+                           <td><span class="badge bg-info-light">Hold</span></td>
+                           <td>Acme Corporation</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/08.jpg" alt="profile"></td>
+                           <td>Marge Arita</td>
+                           <td>+27 5625 456 589</td>
+                           <td>margearita@gmail.com</td>
+                           <td>Africa</td>
+                           <td><span class="badge bg-success-light">Complite</span></td>
+                           <td>Vehement Capital</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="text-center"><img class="rounded img-fluid avatar-40"
+                                 src="../assets/images/user/09.jpg" alt="profile"></td>
+                           <td>Bill Dabear</td>
+                           <td>+55 2563 456 589</td>
+                           <td>billdabear@gmail.com</td>
+                           <td>Brazil</td>
+                           <td><span class="badge bg-primary">active</span></td>
+                           <td>Massive Dynamic</td>
+                           <td>2019/12/01</td>
+                           <td>
+                              <div class="flex align-items-center list-user-action">
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Add" href="#"><i class="ri-user-add-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Edit" href="#"><i class="ri-pencil-line mr-0"></i></a>
+                                 <a class="btn btn-sm bg-primary" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Delete" href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                              </div>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div class="row justify-content-between mt-3">
+                  <div id="user-list-page-info" class="col-md-6">
+                     <span>Showing 1 to 5 of 5 entries</span>
+                  </div>
+                  <div class="col-md-6">
+                     <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end mb-0">
+                           <li class="page-item disabled">
+                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                           </li>
+                           <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                           <li class="page-item"><a class="page-link" href="#">2</a></li>
+                           <li class="page-item"><a class="page-link" href="#">3</a></li>
+                           <li class="page-item">
+                              <a class="page-link" href="#">Next</a>
+                           </li>
                         </ul>
-                    </div>
-                </div>
+                     </nav>
+                  </div>
+               </div>
             </div>
-            <div class="col-lg-4">  
-                <div class="card card-transparent card-block card-stretch mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between p-0">
-                        <div class="header-title">
-                            <h4 class="card-title mb-0">Best Item All Time</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div><a href="#" class="btn btn-primary view-btn font-size-14">View All</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-warning-light rounded">
-                                <img src="../assets/images/product/04.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Coffee Beans Packet</h5>
-                                <p class="mb-2">Total Sell : 45897</p>
-                                <p class="mb-0">Total Earned : $45,89 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-danger-light rounded">
-                                <img src="../assets/images/product/05.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Bottle Cup Set</h5>
-                                <p class="mb-2">Total Sell : 44359</p>
-                                <p class="mb-0">Total Earned : $45,50 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-            <div class="col-lg-4">  
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Income</p>
-                                <h5>$ 98,7800 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton003"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton003">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-3" class="layout-chart-1"></div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Expenses</p>
-                                <h5>$ 45,8956 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton004"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton004">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-4" class="layout-chart-2"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">  
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Order Summary</h4>
-                        </div>                        
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton005"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton005">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="card-body">
-                        <div class="d-flex flex-wrap align-items-center mt-2">
-                            <div class="d-flex align-items-center progress-order-left">
-                                <div class="progress progress-round m-0 orange conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-secondary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3 pr-5 border-right">
-                                    <h5>$12,6598</h5>
-                                    <p class="mb-0">Average Orders</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center ml-5 progress-order-right">
-                                <div class="progress progress-round m-0 primary conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-primary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3">
-                                    <h5>$59,8478</h5>
-                                    <p class="mb-0">Top Orders</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div id="layout1-chart-5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Page end  -->
-    </div>
+         </div>
+      </div>
+   </div>
+</div>
       </div>
     </div>
     <!-- Wrapper End-->
