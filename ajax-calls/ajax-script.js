@@ -34,3 +34,19 @@ $(document).on('submit','#addProduct',function(e){
 });
 });
 
+function deleteStuffs(i){
+    var toConfirm = confirm("Are you sure you want to proceed?")
+    if(toConfirm){
+        $.ajax({
+            type: "POST",
+            url: 'sqlFiles/retreive.php',
+            data:{prodID:i},
+            success:function(html) {
+              alert("Product deleted successfully!");
+              location.reload();
+            }
+    
+       });
+    }
+    
+}

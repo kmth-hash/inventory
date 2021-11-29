@@ -72,6 +72,7 @@ include 'sqlFiles/retreive.php';
                 }
             }
         }
+        
         function qtyReport(value,itno){
             if(window.sessionStorage.getItem('qtyList')){
                 var qty=[];
@@ -170,10 +171,6 @@ include 'sqlFiles/retreive.php';
   </head>
   <body class="  " onload="checkPreviousitems()">
     <!-- loader Start -->
-    <div id="loading">
-          <div id="loading-center">
-          </div>
-    </div>
     <!-- loader END -->
     <!-- Wrapper Start -->
     <div class="wrapper">
