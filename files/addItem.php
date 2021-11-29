@@ -42,7 +42,10 @@
 
     }
     
-    
+    if(isset($_GET['ID']))
+    {
+        echo $_GET['ID'];
+    }
 
 
 ?>

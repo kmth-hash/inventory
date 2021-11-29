@@ -8,7 +8,7 @@ $(document).on('submit','#addItem',function(e){
     data:$(this).serialize(),
     success: function(data){
         alert("Data added!");
-        $("#itemnameID").val('');
+    $("#itemnameID").val('');
     $("#itemunitID").val('').trigger( "change" );
     $("#itemqtyID").val('');
     $("#itemdescID").val('');
@@ -33,3 +33,4 @@ $(document).on('submit','#addProduct',function(e){
 }
 });
 });
+
