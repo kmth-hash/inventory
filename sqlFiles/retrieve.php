@@ -5,6 +5,8 @@ function retreiveItems(){
     $res=mysqli_query($sql,$str);
     return $res;
 }
+?>
+
 
 function retreiveProducts(){
     include 'sql.php';

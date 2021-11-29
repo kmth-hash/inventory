@@ -1,3 +1,10 @@
+<?php
+
+include "sqlFiles/dash.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -198,7 +205,7 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Monthly Purchases</p>
-                <h4 class="mb-0">127</h4>
+                <h4 class="mb-0"><?php echo $totalPurchasesThisMonth ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -215,7 +222,7 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Pending Purchase Items</p>
-                <h4 class="mb-0">12</h4>
+                <h4 class="mb-0"><?php echo $totalPendingItems ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
@@ -232,7 +239,7 @@
               </div>
               <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Total Items</p>
-                <h4 class="mb-0">1250</h4>
+                <h4 class="mb-0"><?php echo $totalItems ?></h4>
               </div>
             </div>
             <hr class="dark horizontal my-0">
